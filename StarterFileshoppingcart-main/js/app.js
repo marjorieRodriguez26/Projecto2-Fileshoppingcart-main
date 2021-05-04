@@ -19,3 +19,15 @@ function loadEventListeners() {
     // document ready
     document.addEventListener('DOMContentLoaded', getFromLocalStorage);
 }
+// Functions
+function buyCourse(e) {
+    e.preventDefault();
+    // use the delegation to find the course that was added
+    if(e.target.classList.contains('add-to-cart')) {
+       // read the course values
+        const course = e.target.parentElement.parentElement;
+
+        // read the values
+        getCourseInfo(course);
+    }
+}
