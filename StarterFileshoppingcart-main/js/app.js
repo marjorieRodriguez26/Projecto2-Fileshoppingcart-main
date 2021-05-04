@@ -94,3 +94,28 @@ function getCoursesFromStorage() {
     return courses;
 
 }
+// remove course from the dom
+function removeCourse(e) {
+    let course, courseId;
+
+    // Remove from the Dom
+    if(e.target.classList.contains('remove')) {
+        e.target.parentElement.parentElement.remove();
+        course = e.target.parentElement.parentElement;
+        courseId = course.querySelector('a').getAttribute('data-id');
+    }
+    console.log(courseId);
+    // remove from the local storage
+    removeCourseLocalStorage(courseId);
+}
+// remove from local storage
+function removeCourseLocalStorage(id) {
+    // get the local storage data
+    let coursesLS = getCoursesFromStorage();
+
+    // Loop throught the array  and find the index to remove
+    coursesLS.forEach(function(courseLS, index) {
+        if(courseLS.id === id ) {
+            coursesLS.splice(index, 1);
+        }
+    });
