@@ -119,3 +119,22 @@ function removeCourseLocalStorage(id) {
             coursesLS.splice(index, 1);
         }
     });
+       // add the rest of the array
+       localStorage.setItem('courses', JSON.stringify(coursesLS) );
+    }
+    
+    // Clears the shopping cart
+    function clearCart() {
+        //shoppingCartContent.innerHTML = '';
+    
+        while(shoppingCartContent.firstChild) {
+            shoppingCartContent.removeChild(shoppingCartContent.firstChild);
+        }
+    
+        // Clear from local storage 
+        clearLocalStorage();
+    }
+    // Clears the whole local storage
+    function clearLocalStorage() {
+        localStorage.clear();
+    }
